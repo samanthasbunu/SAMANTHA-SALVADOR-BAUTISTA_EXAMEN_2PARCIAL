@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+from random import randint
+
+c = [50, 100, 200, 500]
+
+for cuadro in c:
+    print(f"caminata en cuadro {cuadro}x{cuadro}")
+    x = [0, cuadro, cuadro, 0, 0]
+    y = [0, 0, cuadro, cuadro, 0]
+    px2_central, py2_central = cuadro // 2, cuadro // 2
+    for i in range(0,1000):
+        px2 = randint(0, cuadro)
+        py2 = randint(0, cuadro)
+        plt.scatter(px2_central, py2_central, color='black')
+        plt.plot(x, y, linewidth=2, color='red')
+        plt.gca().set_aspect('equal')
+        plt.scatter(px2, py2, color='blue')
+        plt.title(f"iteración_{i:02d} - caminata_cuadro")
+        plt.savefig(f"iteración_{i:02d}cuadro.png")
+        plt.close()
+        break
+    print()
+        
