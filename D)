@@ -1,0 +1,38 @@
+import matplotlib.pyplot as plt
+from random import randint
+
+def caminata(dim):
+    x = dim // 2
+    y = dim // 2
+    pasos = 0
+    continuar = True
+
+    for _ in range(10000): 
+        if x <= 0 or x >= dim - 1 or y <= 0 or y >= dim - 1:
+            break
+
+        d = randint(0, 3)
+        if d == 0:
+            y = y + 1
+        if d == 1:
+            y = y - 1
+        if d == 2:
+            x = x + 1
+        if d == 3:
+            x = x - 1
+        pasos = pasos + 1
+
+    return pasos
+
+dimensiones = [50, 100, 200, 500]
+promedios = []
+
+for dim in dimensiones:
+    suma = 0
+    for _ in range(100):
+        suma = suma + caminata(dim)
+    promedios.append(suma / 100)
+
+plt.pie(promedios, labels=[f"{d}x{d}" for d in dimensiones], autopct='%1.1f%%')
+plt.show()
+
