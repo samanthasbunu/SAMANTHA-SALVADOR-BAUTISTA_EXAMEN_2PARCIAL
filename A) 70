@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+from random import randint
+
+cuadro= 70
+
+x=[0,cuadro,cuadro,0,0]
+y=[0,0,cuadro,cuadro,0]
+Px, Py= cuadro/2, cuadro/2
+plt.scatter (Px,Py, color="green")
+Px2_central, Py2_central = cuadro / 2, cuadro / 2
+for i in range (0,50):
+    Px2= randint(0,cuadro)
+    Py2= randint(0,cuadro)
+    plt.plot(x, y, linewidth=2, color='red')
+    plt.scatter(Px2_central, Py2_central, color='black')
+    plt.gca().set_aspect("equal")
+    plt.scatter(Px2,Py2, color="blue")
+    plt.title(f"iteración_{i:02d}")
+    plt.savefig(f"iteración_{i:02d}.png", dpi=300)
+    plt.close()
+    if Px2== cuadro or Py2==cuadro:
+       print("salio del ciclo:",i)
+       break
+    if Px2== 0 or Py2==0:
+       print("salio en el ciclo:",i)
+       break
+    plt.show()
+    
+
